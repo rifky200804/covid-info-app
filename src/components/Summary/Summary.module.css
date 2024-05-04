@@ -1,0 +1,27 @@
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem 0rem;
+}
+
+.summary {
+    width: 100%;
+    max-width: 1300px;
+}
+
+.summary_head {
+    text-align: center;
+}
+
+.summary_title {
+    color: #06D6A0;
+    margin-bottom: 1rem;
+    font-size: 2.44rem;
+}
+
+.summary_sub_title {
+    font-size: 1.59rem;
+    color: #118AB2;
+    margin-bottom: 1rem;
+}
