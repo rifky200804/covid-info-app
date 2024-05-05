@@ -5,7 +5,7 @@
     background-color: #F8F9FA;
 }
 .container{
-    padding : 1rem;
+    padding : 4rem 2rem;
     width: 100%;
 }
 
@@ -74,6 +74,7 @@
 @media (min-width: 992px) {
     .container {
         max-width: 1300px;
+        padding : 4rem 2rem;
     }
     .form_image{
         display: flex;
