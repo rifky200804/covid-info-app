@@ -43,7 +43,7 @@ function Header(){
             <div className={styles.container}>
             <nav className={styles.header}>  
                 <div className={styles.header_left}>
-                    <p className={styles.header_brand}>Covid ID</p>
+                    <h1 className={styles.header_brand}>Covid ID</h1>
                     <MenuButton onClick={handleClick}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"

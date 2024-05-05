@@ -1,4 +1,4 @@
-import styles from './SummaryCard.module.css'
+import styles from './Card.module.css'
 
 function NumberFormat(props) {
     const { number } = props;
@@ -9,7 +9,7 @@ function NumberFormat(props) {
     );
 }
 
-function Card(props){
+function Data(props){
     const {data} = props
     return(
         <>
@@ -28,7 +28,7 @@ function Card(props){
     )
 }
 
-function SummaryCard(props) {
+function Card(props) {
 
     const {data} = props
 
@@ -38,7 +38,7 @@ function SummaryCard(props) {
                 {
                     data.map((item,index)=>{
                         return(
-                            <Card data ={item}  key={index}/>
+                            <Data data ={item}  key={index}/>
                         )
                     })
                 }
@@ -47,4 +47,4 @@ function SummaryCard(props) {
     )
 }
 
-export default SummaryCard
+export default Card

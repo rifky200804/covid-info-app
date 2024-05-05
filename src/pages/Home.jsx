@@ -10,11 +10,19 @@ import { useState } from "react";
 function Main(){
     let [dataTable,setDataTable] = useState(data.provinces)
     let [summaryCard,setSummaryCard] = useState(indonesia.indonesia)
+    let HeaderTable = [
+        "No",
+        "Provinsi",
+        "Positif",
+        "Sembuh",
+        "Dirawat",
+        "Meninggal"
+    ]
     return(
         <>
             <Hero />
             <Summary title="Indonesia" subTitle="Data Covid Berdasarkan Indonesia" data={summaryCard} type="indonesia" />
-            <Summary title="Provinsi" subTitle="Data Covid Berdasarkan Provinsi" data={dataTable} type="provinsi" />
+            <Summary title="Provinsi" subTitle="Data Covid Berdasarkan Provinsi" data={dataTable} type="provinsi" header={HeaderTable} />
             <FormAddDataCovid dataTable={dataTable} setDataTable={setDataTable} summary={summaryCard} setSummary={setSummaryCard} />
         </>
     )

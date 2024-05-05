@@ -2,17 +2,18 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 0rem 1rem;
+}
+.main_table{
+    display: flex;
+    min-width: 100%;
+    overflow: scroll;
+    margin: 0rem 1rem;
 }
 .datatable{
     border-spacing: 0;
     border: 1px solid #64748B;
     width: 850px;
     /* min-width: 500px; */
-    overflow:scroll;
-}
-.scrollist{
-    overflow: scroll;
 }
 
 .table_header {
@@ -30,7 +31,13 @@
 }
 
 @media (min-width:768px) {
-    
+    .main_table{
+        display: flex;
+        justify-content: center;
+        min-width: 100%;
+        overflow: scroll;
+        margin: 0rem 1rem;
+    }
 }
 
 @media (min-width:992px) {
@@ -41,5 +48,12 @@
         border: 1px solid #64748B;
         max-width: 1300px;
         /* min-width: 500px; */
+    }
+    .main_table{
+        display: flex;
+        justify-content: center;
+        min-width: 100%;
+        overflow: scroll;
+        margin: 0rem 1rem;
     }
 }

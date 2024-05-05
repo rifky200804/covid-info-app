@@ -10,27 +10,27 @@
     flex-direction: column;
   }
   
-  .footer__brand {
-    font-size: 2.4rem;
+  .footer_brand {
+    font-weight: 500;
     margin-bottom: 0;
     display: flex;
     flex-direction: row;
     cursor: pointer;
   }
   
-  .footer__list {
+  .footer_list {
     display: flex;
     flex-direction: column;
     list-style: none;
     padding-top:1rem;
   }
 
-  .footer__left {
+  .footer_left {
     display: flex;
     flex-direction: column;
   }
   
-  .footer__item {
+  .footer_item {
     margin-bottom: 1rem;
     cursor: pointer;
   }
@@ -45,15 +45,15 @@
       align-items: center;
     }
   
-    .footer__brand {
+    .footer_brand {
       margin-bottom: 0;
     }
   
-    .footer__list {
+    .footer_list {
       flex-direction: row;
     }
   
-    .footer__item {
+    .footer_item {
       margin: 0 1rem;
     }
   }

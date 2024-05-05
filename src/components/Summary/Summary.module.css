@@ -17,11 +17,13 @@
 .summary_title {
     color: #06D6A0;
     margin-bottom: 1rem;
-    font-size: 2.44rem;
+    font-size: 3.815rem;
+    font-weight: 500;
 }
 
 .summary_sub_title {
     font-size: 1.59rem;
     color: #118AB2;
+    font-weight: 500;
     margin-bottom: 1rem;
 }

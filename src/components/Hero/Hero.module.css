@@ -7,7 +7,7 @@
 }
 
 .container {
-  margin: 1rem;
+  padding: 4rem 2rem;
   display: flex;
   justify-content: space-between;
 }
@@ -26,16 +26,20 @@
 .hero_title {
   color: #06d6a0;
   margin-bottom: 1rem;
-  font-size: 2.44rem;
+  font-size: 3.815rem;
+  font-weight: 500;
 }
 
 .hero_genre {
   color: #118ab2;
+  font-size: 1.59rem;
+  font-weight: 500;
   margin-bottom: 1rem;
 }
 
 .hero_description {
   color: #64748b;
+  font-weight: 400;
   margin-bottom: 1rem;
 }
 
@@ -48,7 +52,7 @@
 }
 
 .hero_right {
-  display: none;
+  display: flex;
 }
 
 .hero_image {
@@ -58,6 +62,10 @@
 }
 
 @media (min-width: 768px) {
+  .hero_right {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 @media (min-width: 992px) {

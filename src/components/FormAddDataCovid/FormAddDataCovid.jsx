@@ -3,9 +3,8 @@ import styles from "./FormAddDataCovid.module.css"
 import { nanoid } from "nanoid";
 import AlertInput from '../AlertInput/AlertInput'
 import Image from '../../assets/conceptual_idea.svg'
-import InputText from "../InputText/InputText";
-import SelectOption from "../SelectOption/SelectOption";
-import data from "../../utils/constants/provinces";
+import InputText from "./InputText/InputText";
+import SelectOption from "./SelectOption/SelectOption";
 
 
 function FormAddDataCovid(props){
@@ -64,30 +63,6 @@ function FormAddDataCovid(props){
             setIsStatusError(false)
             setIsJumlahError(true)
         }else{
-            // // add column
-            // let item = {}
-            // item.kota = provinsi
-            // item.kasus = jumlah 
-            // if(status == "Meninggal"){
-            //     item.meninggal = Number(jumlah)
-            //     item.sembuh = 0
-            //     item.dirawat = 0
-            // }else if(status == "Sembuh"){
-            //     item.meninggal = 0
-            //     item.sembuh = Number(jumlah)
-            //     item.dirawat = 0
-            // }else if(status == "Dirawat"){
-            //     item.meninggal = 0
-            //     item.sembuh = 0
-            //     item.dirawat = Number(jumlah)
-            // }else{
-            //     item.meninggal = 0
-            //     item.sembuh = 0
-            //     item.dirawat = 0
-            // }
-            // console.log(item)
-            // setDataTable([...dataTable,item])
-            
             // update column dataTable
             dataTable.map((item,index)=>{
                 let updatedDataTable = [...dataTable];
@@ -99,7 +74,7 @@ function FormAddDataCovid(props){
                             break;
                         case "Sembuh":
                             item.kasus = Number(item.kasus) + Number(jumlah)
-                            item.sembuh = Number(item.meninggal) + Number(jumlah)
+                            item.sembuh = Number(item.sembuh) + Number(jumlah)
                             break;
                         case "Dirawat":
                             item.kasus = Number(item.meninggal) + Number(jumlah)
