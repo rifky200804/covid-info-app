@@ -15,9 +15,9 @@ function Summary({ title, subTitle, type, data }) {
         </div>
         <div className={styles.summary_content}>
           {type === "provinsi" ? (
-            <DataTable data={data.provinces} />
+            <DataTable data={data} />
           ) : (
-            <SummaryCard data={data.provinces} />
+            <SummaryCard data={data} />
           )}
         </div>
       </section>

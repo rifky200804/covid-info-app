@@ -15,13 +15,13 @@
     overflow: scroll;
 }
 
-th {
+.table_header {
     color: #06D6A0 ;
     border: 1px solid #64748B;
     padding: 0.5rem ;
 }
 
-td {
+.table_content {
     color: black ;
     border: 1px solid #64748B;
     padding: 0.5rem ;

@@ -1,11 +1,28 @@
 import styles from './SummaryCard.module.css'
 
+function NumberFormat(props) {
+    const { number } = props;
+    const formattedNumber = parseFloat(number).toLocaleString('id-ID', { minimumFractionDigits: 0 });
+  
+    return (
+      <span>{formattedNumber}</span>
+    );
+}
+
 function Card(props){
-    const {data,number} = props
+    const {data} = props
     return(
         <>
             <div className={styles.card}>
-
+                <p className={styles.card_title} >{data.status}</p>
+                <p
+                    className={styles.card_body}
+                    style={
+                        {color : data.status =='Meninggal' ?  '#EF476F' : data.status == "Positif" ? '#118AB2' : '#06D6A0'
+                    }}
+                    >
+                        <NumberFormat number={data.total} />
+                </p>
             </div>
         </>
     )
@@ -18,9 +35,13 @@ function SummaryCard(props) {
     return(
         <>
             <div className={styles.cards}>
-                <Card />
-                <Card />
-                <Card />
+                {
+                    data.map((item,index)=>{
+                        return(
+                            <Card data ={item}  key={index}/>
+                        )
+                    })
+                }
             </div>
         </>
     )

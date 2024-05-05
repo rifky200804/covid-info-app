@@ -4,17 +4,18 @@ import Footer from "../components/Footer/Footer";
 import Hero from "../components/Hero/Hero";
 import Summary from "../components/Summary/Summary";
 import data from '../utils/constants/provinces.js'
-import Form from "../components/FormAddDataCovid/FormAddDataCovid.jsx";
-
+import indonesia from '../utils/constants/indonesia.js'
+import FormAddDataCovid from "../components/FormAddDataCovid/FormAddDataCovid";
+import { useState } from "react";
 function Main(){
-    // const title = "Provinsi"
-    // const subTitle = "Data Covid Berdasarkqan Provinsi"
+    let [dataTable,setDataTable] = useState(data.provinces)
+    let [summaryCard,setSummaryCard] = useState(indonesia.indonesia)
     return(
         <>
             <Hero />
-            <Summary title="Indonesia" subTitle="Data Covid Berdasarkan Indonesia" data={data} type="indonesia" />
-            <Summary title="Provinsi" subTitle="Data Covid Berdasarkan Provinsi" data={data} type="provinsi" />
-            <Form title="Provinsi" subTitle="Data Covid Berdasarkan Provinsi" data={data} />
+            <Summary title="Indonesia" subTitle="Data Covid Berdasarkan Indonesia" data={summaryCard} type="indonesia" />
+            <Summary title="Provinsi" subTitle="Data Covid Berdasarkan Provinsi" data={dataTable} type="provinsi" />
+            <FormAddDataCovid dataTable={dataTable} setDataTable={setDataTable} summary={summaryCard} setSummary={setSummaryCard} />
         </>
     )
 }

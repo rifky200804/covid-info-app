@@ -2,12 +2,12 @@ import styles from './DataTable.module.css'
 function Thead(){
     return(
                     <tr>
-                        <th>No</th>
-                        <th>Provinsi</th>
-                        <th>Positif</th>
-                        <th>Sembuh</th>
-                        <th>Dirawat</th>
-                        <th>Meninggal</th>
+                        <th className={styles.table_header}>No</th>
+                        <th className={styles.table_header}>Provinsi</th>
+                        <th className={styles.table_header}>Positif</th>
+                        <th className={styles.table_header}>Sembuh</th>
+                        <th className={styles.table_header}>Dirawat</th>
+                        <th className={styles.table_header}>Meninggal</th>
                     </tr>
     )
 }
@@ -16,12 +16,12 @@ function Tbody(props){
     const {data,number} = props
     return(
                     <tr>
-                        <td>{number}</td>
-                        <td>{data.kota}</td>
-                        <td>{data.kasus}</td>
-                        <td>{data.sembuh}</td>
-                        <td>{data.dirawat}</td>
-                        <td>{data.meninggal}</td>
+                        <td className={styles.table_content}>{number}</td>
+                        <td className={styles.table_content}>{data.kota}</td>
+                        <td className={styles.table_content}>{data.kasus}</td>
+                        <td className={styles.table_content}>{data.sembuh}</td>
+                        <td className={styles.table_content}>{data.dirawat}</td>
+                        <td className={styles.table_content}>{data.meninggal}</td>
                     </tr>
     )
 }
@@ -38,10 +38,9 @@ function DataTable(props) {
                         <Thead />
                     </thead>
 
-                    <tbody className='scrollis'>
+                    <tbody>
                         {data.map((item,index)=>{
                             const number = index + 1;
-                            console.log(number)
                             return (
                                 <Tbody key={index} number={number}  data={item} />
                             )
