@@ -56,9 +56,12 @@ function FormAddDataCovid(props){
         let checkData = dataTable.filter(function(item){
             return item.kota == provinsi
         })
-
-        let data = checkData[0]
-        let kasusPositif = Number(data.kasus) - Number(data.sembuh) - Number(data.dirawat) - Number(data.meninggal)
+        console.log(checkData.length)
+        let kasusPositif = 0
+        if (checkData.length > 0) {
+            let data = checkData[0]
+            kasusPositif = Number(data.kasus) - Number(data.sembuh) - Number(data.dirawat) - Number(data.meninggal)
+        }
 
 
         if(provinsi == ""){
