@@ -45,4 +45,12 @@
         box-shadow: 0px 4px 4px 0px #00000040;
     }
 }
-
+@media (max-width:455px){
+    .card_title{
+        font-size: 1.953rem;
+     }
+     
+     .card_body{
+         font-size: 2.441rem
+     }
+}
