@@ -1,5 +1,5 @@
 import styles from './InputText.module.css'
-function InputText({id,type,onChange}){
+function InputText({id,type,onChange,value}){
 
     return(
         <input
@@ -8,6 +8,7 @@ function InputText({id,type,onChange}){
                                 className={styles.input_text}
                                 onChange={onChange}
                                 autoComplete='off'
+                                value={value}
                             />
     )
 }

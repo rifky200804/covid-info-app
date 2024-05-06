@@ -111,6 +111,10 @@ function FormAddDataCovid(props){
             setIsProvinsiError(false)
             setIsStatusError(false)
             setIsJumlahError(false)
+            setProvinsi("")
+            setStatus("")
+            setJumlah("")
+            alert("Success Submit Data");
         }
     }
     return (
@@ -135,6 +139,7 @@ function FormAddDataCovid(props){
                                 data={filterProvinsi}
                                 type="Provinsi"
                                 onChange={handleProvinsi}
+                                value={provinsi}
                             />
                             {isProvinsiError && <AlertInput>*Provinsi Wajib Diisi</AlertInput>}
                         </div>
@@ -145,6 +150,7 @@ function FormAddDataCovid(props){
                                 data={filterStatus}
                                 type="Status"
                                 onChange={handleStatus}
+                                value={status}
                             />
                             {isStatusError && <AlertInput>*Status Wajib Diisi</AlertInput>}
                         </div>
@@ -154,6 +160,7 @@ function FormAddDataCovid(props){
                                 id="jumlah"
                                 type="number"
                                 onChange={handleJumlah}
+                                value={jumlah}
                             />
                             {isJumlahError && <AlertInput>*Jumlah Wajib diisi</AlertInput>}
                         </div>

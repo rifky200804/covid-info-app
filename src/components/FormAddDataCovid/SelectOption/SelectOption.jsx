@@ -1,5 +1,5 @@
 import styles from './SelectOption.module.css'
-function SelectOption({id,data,onChange,type}){
+function SelectOption({id,data,onChange,type,value}){
 
     return(
         <select
@@ -11,7 +11,11 @@ function SelectOption({id,data,onChange,type}){
             {
                 data.map((item,index)=>{
                     return(
-                        <option key={index} className={styles.list_item} value={item.value}>{item.label}</option>
+                        <option key={index} className={styles.list_item} value={item.value}
+                            selected={value === item.value ? true : false}
+                        >
+                            {item.label}
+                        </option>
                     )
                 })
             }
