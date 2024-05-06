@@ -1,5 +1,5 @@
 import styles from './SelectOption.module.css'
-function SelectOption({id,data,onChange,type,value}){
+function SelectOption({id,data,onChange,type,value = ""}){
 
     return(
         <select
