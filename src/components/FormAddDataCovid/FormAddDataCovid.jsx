@@ -34,18 +34,18 @@ function FormAddDataCovid(props){
     filterStatus = [...filterStatus,obj]
     
     const [provinsi,setProvinsi] = useState("")
-    const [isProvinsiError,setIsProvinsiError] = useState(false)
+    const [isProvinsiError,setIsProvinsiError] = useState("")
     function handleProvinsi(e){
         setProvinsi(e.target.value)
     }
     const [status,setStatus] = useState("")
-    const [isStatusError,setIsStatusError] = useState(false)
+    const [isStatusError,setIsStatusError] = useState("")
     function handleStatus(e){
         setStatus(e.target.value)
     }
 
     const [jumlah,setJumlah] = useState("")
-    const [isJumlahError,setIsJumlahError] = useState(false)
+    const [isJumlahError,setIsJumlahError] = useState("")
     function handleJumlah(e){
         setJumlah(e.target.value)
     }
@@ -53,15 +53,27 @@ function FormAddDataCovid(props){
     function handleSubmit(e) {
         e.preventDefault();
 
+        let checkData = dataTable.filter(function(item){
+            return item.kota == provinsi
+        })
+
+        let data = checkData[0]
+        let kasusPositif = Number(data.kasus) - Number(data.sembuh) - Number(data.dirawat) - Number(data.meninggal)
+
+
         if(provinsi == ""){
-            setIsProvinsiError(true)
+            setIsProvinsiError("Provinsi Wajib Di isi")
         }else if(status == ""){
-            setIsProvinsiError(false)
-            setIsStatusError(true)
-        }else if(jumlah == ""){
-            setIsProvinsiError(false)
-            setIsStatusError(false)
-            setIsJumlahError(true)
+            setIsProvinsiError("")
+            setIsStatusError("Status Wajib Di isi")
+        }else if(jumlah == "" || (jumlah > kasusPositif  && status != "Positif")){
+            setIsProvinsiError("")
+            setIsStatusError("")
+            if(jumlah == ""){
+                setIsJumlahError("Jumlah Wajib Di isi")
+            }else if(jumlah > kasusPositif  && status != "Positif"){
+                setIsJumlahError("Jumlah Tidak Dapat melebihi Status Positif")
+            }
         }else{
             // update column dataTable
             dataTable.map((item,index)=>{
@@ -69,15 +81,12 @@ function FormAddDataCovid(props){
                 if(provinsi == item.kota){
                     switch (status) {
                         case "Meninggal":
-                            item.kasus = Number(item.kasus) + Number(jumlah)
                             item.meninggal = Number(item.meninggal) + Number(jumlah)
                             break;
                         case "Sembuh":
-                            item.kasus = Number(item.kasus) + Number(jumlah)
                             item.sembuh = Number(item.sembuh) + Number(jumlah)
                             break;
                         case "Dirawat":
-                            item.kasus = Number(item.meninggal) + Number(jumlah)
                             item.dirawat =Number(item.dirawat) + Number(jumlah)
                             break;
                         default:
@@ -99,7 +108,7 @@ function FormAddDataCovid(props){
                     case "Sembuh":
                         item.total = Number(item.total) + Number(jumlah)
                         break;
-                    default:
+                    case "Positif":
                         item.total = Number(item.total) + Number(jumlah)
                         break;
                 }
@@ -108,9 +117,9 @@ function FormAddDataCovid(props){
                 setSummary(updatedDataSummary)
             })
             
-            setIsProvinsiError(false)
-            setIsStatusError(false)
-            setIsJumlahError(false)
+            setIsProvinsiError("")
+            setIsStatusError("")
+            setIsJumlahError("")
             setProvinsi("")
             setStatus("")
             setJumlah("")
@@ -141,7 +150,7 @@ function FormAddDataCovid(props){
                                 onChange={handleProvinsi}
                                 value={provinsi}
                             />
-                            {isProvinsiError && <AlertInput>*Provinsi Wajib Diisi</AlertInput>}
+                            {isProvinsiError != "" && <AlertInput>*{isProvinsiError}</AlertInput>}
                         </div>
                         <div className={styles.form_group}>
                             <h2 className={styles.form_label}>Status</h2>
@@ -152,7 +161,7 @@ function FormAddDataCovid(props){
                                 onChange={handleStatus}
                                 value={status}
                             />
-                            {isStatusError && <AlertInput>*Status Wajib Diisi</AlertInput>}
+                            {isStatusError != "" && <AlertInput>*{isStatusError}</AlertInput>}
                         </div>
                         <div className={styles.form_group}>
                             <h2 className={styles.form_label}>Jumlah</h2>
@@ -162,7 +171,7 @@ function FormAddDataCovid(props){
                                 onChange={handleJumlah}
                                 value={jumlah}
                             />
-                            {isJumlahError && <AlertInput>*Jumlah Wajib diisi</AlertInput>}
+                            {isJumlahError != "" && <AlertInput>*{isJumlahError}</AlertInput>}
                         </div>
                         <div className={styles.form_group}>
                             <button

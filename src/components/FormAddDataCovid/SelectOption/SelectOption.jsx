@@ -6,14 +6,13 @@ function SelectOption({id,data,onChange,type,value = ""}){
             id={id}
             className={styles.form_select}
             onChange={onChange}
+            value={value}
         >
             <option className={styles.list_item} value="">-- Select {type} --</option>
             {
                 data.map((item,index)=>{
                     return(
-                        <option key={index} className={styles.list_item} value={item.value}
-                            selected={value === item.value ? true : false}
-                        >
+                        <option key={index} className={styles.list_item} value={item.value}>
                             {item.label}
                         </option>
                     )
