@@ -2,7 +2,16 @@ import DataTable from "./DataTable/DataTable";
 import SummaryCard from "./Card/Card";
 import styles from "./Summary.module.css";
 
-function Summary({ title, subTitle, type, data, header }) {
+let HeaderTable = [
+  "No",
+  "Provinsi",
+  "Positif",
+  "Sembuh",
+  "Dirawat",
+  "Meninggal"
+]
+
+function Summary({ title, subTitle, type, data}) {
   return (
     <div className={styles.container} 
     style={{
@@ -15,7 +24,7 @@ function Summary({ title, subTitle, type, data, header }) {
         </div>
         <div className={styles.summary_content}>
           {type === "provinsi" ? (
-            <DataTable data={data} header={header} />
+            <DataTable data={data} header={HeaderTable} />
           ) : (
             <SummaryCard data={data} />
           )}
