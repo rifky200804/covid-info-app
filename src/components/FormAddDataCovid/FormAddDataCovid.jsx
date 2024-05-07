@@ -69,14 +69,10 @@ function FormAddDataCovid(props){
         }else if(status == ""){
             setIsProvinsiError("")
             setIsStatusError("Status Wajib Di isi")
-        }else if(jumlah == "" || (jumlah > kasusPositif  && status != "Positif")){
+        }else if(jumlah == ""){
             setIsProvinsiError("")
             setIsStatusError("")
-            if(jumlah == ""){
-                setIsJumlahError("Jumlah Wajib Di isi")
-            }else if(jumlah > kasusPositif  && status != "Positif"){
-                setIsJumlahError("Jumlah Tidak Dapat melebihi Status Positif")
-            }
+            setIsJumlahError("Jumlah Wajib Di isi")
         }else{
             // update column dataTable
             dataTable.map((item,index)=>{
@@ -90,6 +86,7 @@ function FormAddDataCovid(props){
                             item.sembuh = Number(item.sembuh) + Number(jumlah)
                             break;
                         case "Dirawat":
+                            item.kasus = Number(item.kasus) + Number(jumlah)
                             item.dirawat =Number(item.dirawat) + Number(jumlah)
                             break;
                         default:
@@ -104,16 +101,12 @@ function FormAddDataCovid(props){
             // update summary
             summary.map((item,index)=>{
                 let updatedDataSummary = [...summary];
-                switch (status) {
-                    case "Meninggal":
-                        item.total = Number(item.total) + Number(jumlah)
-                        break;
-                    case "Sembuh":
-                        item.total = Number(item.total) + Number(jumlah)
-                        break;
-                    case "Positif":
-                        item.total = Number(item.total) + Number(jumlah)
-                        break;
+                if (status == "Meninggal" && item.status == "Meninggal") {
+                    item.total = Number(item.total) + Number(jumlah)
+                }else if(status == "Sembuh" && item.status == "Sembuh"){
+                    item.total = Number(item.total) + Number(jumlah)
+                }else if(status == "Dirawat" || status == "Positif"){
+                    item.total = Number(item.total) + Number(jumlah)
                 }
                 updatedDataSummary[index] = item;
 
