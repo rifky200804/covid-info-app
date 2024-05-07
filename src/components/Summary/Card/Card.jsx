@@ -18,7 +18,7 @@ function Data(props){
                 <p
                     className={styles.card_body}
                     style={
-                        {color : data.status =='Meninggal' ?  '#EF476F' : data.status == "Positif" ? '#118AB2' : '#06D6A0'
+                        {color : data.status =='Meninggal' ?  '#EF476F' : data.status == "Positif" ? '#06D6A0' : '#118AB2'
                     }}
                     >
                         <NumberFormat number={data.total} />
