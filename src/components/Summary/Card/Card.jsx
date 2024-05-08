@@ -14,7 +14,9 @@ function Data(props){
     return(
         <>
             <div className={styles.card}>
-                <p className={styles.card_title} >{data.status}</p>
+                <p className={styles.card_title} >
+                    {data.status == "Meninggal" ? "Death" : data.status == "Sembuh" ? "Recovered" : data.status == "Positif" ? "Confirmed" : data.status}
+                </p>
                 <p
                     className={styles.card_body}
                     style={
