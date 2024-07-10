@@ -1,10 +1,12 @@
-import styles from './AlertInput.module.css'
+import AlertInputStyled from './AlertInput.styled'
 
 function AlertInput(props) {
     return(
-        <div className={styles.error}>
-            <span>{props.children}</span>
-        </div>
+        <AlertInputStyled>
+            <div className={`error`}>
+                <span>{props.children}</span>
+            </div>
+        </AlertInputStyled>
     )
 }
 export default AlertInput

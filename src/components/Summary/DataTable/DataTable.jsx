@@ -1,59 +1,51 @@
-import styles from './DataTable.module.css'
-function Thead(props){
-    const {headers} = props
-    return(
-                    <tr>
-                        {
-                            headers.map((item,index)=>{
-                                return(
-                                    <th className={styles.table_header} key={index}>{item}</th>
-                                )
-                            })
-                        }
-                    </tr>
-    )
+import DataTableStyled from './DataTable.styled';
+import NumberFormat from '../../../utils/NumberFormat';
+
+function Thead({ headers }) {
+    return (
+        <tr>
+            {headers.map((item, index) => (
+                <th className="table_header" key={index}>{item}</th>
+            ))}
+        </tr>
+    );
 }
 
-function Tbody(props){
-    const {data,number} = props
-    return(
-                    <tr>
-                        <td className={styles.table_content}>{number}</td>
-                        <td className={styles.table_content}>{data.kota}</td>
-                        <td className={styles.table_content}>{data.kasus}</td>
-                        <td className={styles.table_content}>{data.sembuh}</td>
-                        <td className={styles.table_content}>{data.dirawat}</td>
-                        <td className={styles.table_content}>{data.meninggal}</td>
-                    </tr>
-    )
+function Tbody({ data, number }) {
+    return (
+        <tr>
+            <td className="table_content">{number}</td>
+            <td className="table_content">{data.kota || data.name}</td>
+            <td className="table_content">{NumberFormat(data.kasus) || NumberFormat(data.numbers?.confirmed)}</td>
+            <td className="table_content">{NumberFormat(data.sembuh) || NumberFormat(data.numbers?.recovered)}</td>
+            <td className="table_content">{NumberFormat(data.dirawat) || NumberFormat(data.numbers?.treatment)}</td>
+            <td className="table_content">{NumberFormat(data.meninggal) || NumberFormat(data.numbers?.death)}</td>
+        </tr>
+    );
 }
 
 function DataTable(props) {
+    const { data, header } = props;
 
-    const {data,header} = props
-
-    return(
-        <>
-            <div className={styles.main_content}>
-                <div className={styles.main_table}>
-                    <table className={styles.datatable}>
+    return (
+        <DataTableStyled>
+            <div className="main_content">
+                <div className="main_table">
+                    <table className="datatable">
                         <thead>
                             <Thead headers={header} />
                         </thead>
-
                         <tbody>
-                            {data.map((item,index)=>{
+                            {data.map((item, index) => {
                                 const number = index + 1;
-                                return (
-                                    <Tbody key={index} number={number}  data={item} />
-                                )
+                                return <Tbody key={index} number={number} data={item} />;
                             })}
                         </tbody>
                     </table>
                 </div>
             </div>
-        </>
-    )
+        </DataTableStyled>
+    );
 }
 
-export default DataTable
+export default DataTable;

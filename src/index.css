@@ -7,20 +7,29 @@
 
 h1{
   font-size:3.052rem;
+  font-weight:normal;
 }
 
 h2{
   font-size:2.441rem;
+  font-weight:normal;
+
 }
 
 h3{
   font-size:1.953rem;
+  font-weight:normal;
+  
 }
 
 h4{
   font-size:1.563rem;
+  font-weight:normal;
+
 }
 
 p{
   font-size: 1rem;
+  font-weight:normal;
+  
 }

@@ -1,30 +1,20 @@
-
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
 import Hero from "../components/Hero/Hero";
 import Summary from "../components/Summary/Summary";
 import data from '../utils/constants/provinces.js'
 import indonesia from '../utils/constants/indonesia.js'
 import FormAddDataCovid from "../components/FormAddDataCovid/FormAddDataCovid";
 import { useState } from "react";
-function Main(){
-    let [dataTable,setDataTable] = useState(data.provinces)
-    let [summaryCard,setSummaryCard] = useState(indonesia.indonesia)
-    return(
-        <>
-            <Hero />
-            <Summary title="Indonesia" subTitle="Data Covid Berdasarkan Indonesia" data={summaryCard} type="indonesia" />
-            <Summary title="Provinsi" subTitle="Data Covid Berdasarkan Provinsi" data={dataTable} type="provinsi" />
-            <FormAddDataCovid dataTable={dataTable} setDataTable={setDataTable} summary={summaryCard} setSummary={setSummaryCard} />
-        </>
-    )
-}
+import DefaultLayout from "../layout/DefaultLayout";
 function Home() {
+    let [summaryCard,setSummaryCard] = useState([])
+    let [summaryRegionCard,setSummaryRegionCard] = useState([])
     return (
         <>
-            <Header />
-            <Main/>
-            <Footer/>
+            <DefaultLayout >
+                <Hero />
+                <Summary title="Global Situation" subTitle="Data Covid Berdasarkan Global" data={summaryCard} setData={setSummaryCard} type="global" bg={`dark`}/>
+                <Summary title="Situation By Regions" subTitle="Bacaan Pilihan Covid" data={summaryRegionCard} setData={setSummaryRegionCard} type="regions" />
+            </DefaultLayout>
         </>
     );
 }

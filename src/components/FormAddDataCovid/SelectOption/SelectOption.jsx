@@ -1,24 +1,26 @@
-import styles from './SelectOption.module.css'
+import SelectOptionStyled from './SelectOption.styled'
 function SelectOption({id,data,onChange,type,value = ""}){
 
     return(
+        <SelectOptionStyled>
         <select
             id={id}
-            className={styles.form_select}
+            className={`form_select`}
             onChange={onChange}
             value={value}
         >
-            <option className={styles.list_item} value="">-- Select {type} --</option>
+            <option className={`list_item`} value="">-- Select {type} --</option>
             {
                 data.map((item,index)=>{
                     return(
-                        <option key={index} className={styles.list_item} value={item.value}>
+                        <option key={index} className={`list_item`} value={item.value}>
                             {item.label}
                         </option>
                     )
                 })
             }
         </select>
+        </SelectOptionStyled>
     )
 }
 

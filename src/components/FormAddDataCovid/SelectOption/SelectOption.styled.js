@@ -1,5 +1,8 @@
-.form_select {
-    border: 2px solid #06D6A0 ;
+import styled from 'styled-components';
+
+const SelectOptionStyled = styled.div`
+  .form_select {
+    border: 2px solid #06D6A0;
     border-radius: 5px;
     background-color: #FFFFFF;
     width: 100%;
@@ -7,11 +10,13 @@
     font-size: 1rem;
     padding: 5px;
     cursor: pointer;
-}
+  }
 
-.list_item{
+  .list_item {
     width: 100%;
     font-size: 1rem;
     cursor: pointer;
-}
+  }
+`;
 
+export default SelectOptionStyled;

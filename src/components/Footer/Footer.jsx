@@ -1,27 +1,32 @@
-import styles from './Footer.module.css';
+import { Link, useLocation } from 'react-router-dom';
+import React from 'react';
+import FooterStyled from './Footer.styled';
+const Footer = () => {
+    const location = useLocation();
 
-function Footer(){
-   
-    return(
-        <>
-            <div className={styles.container}>
-            <nav className={styles.footer}>  
-                <div className={styles.footer_left}>
-                    <h1 className={styles.footer_brand}>Covid ID</h1>
-                    <br />
-                    <p>Developed By rifky200804</p>
-                </div>
-                <div>
-                    <ul className={styles.footer_list }>
-                        <li className={styles.footer_item}>Global</li>
-                        <li className={styles.footer_item}>Indonesia</li>
-                        <li className={styles.footer_item}>Provinsi</li>
-                        <li className={styles.footer_item}>About</li>
-                    </ul>
-                </div>
-            </nav>
+  return (
+    <FooterStyled>
+      <div className="footer">
+        <div className="footer_left">
+          <div className="footer_brand">Covid ID</div>
         </div>
-        </>
-    )
-}
-export default Footer
+        <ul className="footer_list">
+          <li className="footer_item">
+            <Link to="/" className={`link_item ${location.pathname == '/' && 'active'}`}>Global</Link>
+          </li>
+          <li className="footer_item">
+            <Link to="/indonesia" className={`link_item ${location.pathname == '/indonesia' && 'active'}`}>Indonesia</Link>
+          </li>
+          <li className="footer_item">
+            <Link to="/provinsi" className={`link_item ${location.pathname == '/provinsi' && 'active'}`}>Provinsi</Link>
+          </li>
+          <li className="footer_item">
+            <Link to="/about" className={`link_item ${location.pathname == '/about' && 'active'}`}>About</Link>
+          </li>
+        </ul>
+      </div>
+    </FooterStyled>
+  );
+};
+
+export default Footer;
