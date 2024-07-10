@@ -10,7 +10,7 @@ const DataTableStyled = styled.div`
   .main_table {
     display: flex;
     min-width: 100%;
-    overflow: scroll;
+    overflow-x: scroll;
     margin: 0rem 1rem;
 
     @media (min-width: 768px) {
@@ -29,7 +29,7 @@ const DataTableStyled = styled.div`
     border: 1px solid ${({ theme }) => theme.colors.blackColor};
 
     @media (min-width: 992px) {
-      overflow: scroll;
+      overflow-x: scroll;
       max-width: 1300px;
       width: 850px;
     }
