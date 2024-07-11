@@ -1,9 +1,21 @@
 // About.js
 
-import React from "react";
+import React, { useEffect,useState } from "react";
 import AboutStyled from "./About.styled";
-
+import TextArea from "./TextArea/TextArea"
+import UserImage from "../../assets/user.jpg"
+import DeveloperImage from "../../assets/developer.jpeg"
 const About = () => {
+    const [saran, setSaran] = useState();
+    const handleSubmit = () => {
+        setSaran(null)
+        alert("Success Mengirim Saran")
+    }
+
+    useEffect(()=>{
+        setSaran(null)
+    },[saran])
+
   return (
     <AboutStyled>
       <div className="container">
@@ -46,9 +58,28 @@ const About = () => {
           </p>
         </div>
         <div className="contact">
-          <h3 className="title">Kontak</h3>
-          <p>Email  : covid-app-info@email.com</p>
-          <p>Instagram &nbsp; : @covid_app_info</p>
+          <h3 className="title">Kontak Developer</h3>
+          <div className="developer">
+            <img src={DeveloperImage} alt="Foto Developer" className="img_developer"/>
+            <div className="contact_developer">
+              <p>Developer: Muhammad Rifky Syiahbudin</p>
+              <p>Email Developer: rifkysyiahbudin200804@example.com</p>
+              <p>Instagram Developer: @rifkysyiahbudin_</p>
+            </div>
+          </div>
+          <p className="description_developer">
+                Saya adalah seorang Software Developer dengan pengalaman luas dalam
+                pengembangan aplikasi web . Saya memiliki Beberapa keahlian
+                dalam berbagai bahasa pemrograman dan framework, serta
+                berkomitmen untuk menciptakan aplikasi yang bermanfaat bagi
+                masyarakat.
+          </p>
+        </div>
+        <div className="suggestion_box">
+          <h3 className="title">Kotak Saran</h3>
+          <TextArea placeholder="Masukkan saran Anda di sini..." value={saran} onChange={(e)=>setSaran(e.target.value)}></TextArea>
+        
+          <button className="btn_primary" onClick={handleSubmit}>Kirim Saran</button>
         </div>
       </div>
     </AboutStyled>
